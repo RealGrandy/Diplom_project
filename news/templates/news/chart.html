@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %} Муравейник {% endblock %}
+
+{% block sidebar %}
+
+{% endblock %}
+
+{% block content %}
+{% for item in songs %}
+<div class="card text-center col-md-8 mb-3">
+    <div class="card-header">
+        Исполнитель: {{ item.artist }}
+    </div>
+    <div class="card-body">
+        <div class="media">
+            <div class="media-body">
+                <h5 class="card-title">{{ item.title }}</h5>
+                <img src="{{ item.image.url }}" alt="" width="150" class="">
+            </div>
+            <a href="{{item.get_absolute_url}}" class="btn btn-warning mt-2">Послушать</a>
+        </div>
+    </div>
+    <div class="card-footer text-end text-muted">
+        <h5>Рейтинг: {{ item.rating }}</h5>
+        {% if request.user.is_authenticated %}
+        
+        {% comment %}
+        <button class="btn btn-success btn-sm" onclick="{{item.add_rating}}">За</button>
+        <button class="btn btn-danger btn-sm" onclick="">Против</button>
+        {% endcomment %}
+
+        <a href="{% url 'up' item.id %}" class="btn btn-success btn-sm">За</a>
+        <a href="{% url 'down' item.id %}" class="btn btn-danger btn-sm">Против</a>
+
+        {% endif %}
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

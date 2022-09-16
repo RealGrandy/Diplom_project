@@ -1,0 +1,49 @@
+<nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'home' %}">Муравейник таланта</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Список новостей</a>
+                </li>
+
+
+                {% if request.user.is_authenticated %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Добавление</a>
+                    <ul class="dropdown-menu">
+                        
+                      <li><a class="dropdown-item" href="{% url 'add_news' %}">Новость/объявление</a></li>
+                      <li><a class="dropdown-item" href="{% url 'add_song' %}">Песню</a></li>
+                    
+                    </ul>
+                </li>
+                {% endif %}
+
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'chart' %}">Хит-парад</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'music' %}">Плеер</a>
+                </li>
+
+            </ul>
+
+            </ul>
+
+            {% if request.user.is_authenticated %}
+            Ура! Вы вошли под именем: {{ user.username }} | <a href="{% url 'logout' %}">Выйти</a>
+            {% else %}
+            <span class="navbar-text">
+                <a href="{% url 'register' %}">Регистрация</a> | <a href="{% url 'login' %}">Авторизация</a>
+            </span>
+            {% endif %}
+
+        </div>
+    </div>
+</nav>
