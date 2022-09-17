@@ -4,14 +4,8 @@
   <head>
     <meta charset="utf-8" />
     <title>Плеер таланта</title>
-    <link
-      href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.7/mediaelementplayer.min.css"
-      rel="stylesheet"
-    />
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.7/mediaelementplayer.min.css" rel="stylesheet" />
     <link href="{% static './style.css' %}" rel="stylesheet" />
   </head>
   <body>
@@ -35,25 +29,14 @@
               </div>
               <center>
                 {% if page_obj.has_previous %}
-                <a
-                  href="{% if page_obj.has_previous %}?page={{ page_obj.previous_page_number }}{% endif %}"
-                  ><i class="fa fa-step-backward fa-2x"></i
-                ></a>
-                {% endif %}
-                &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp;
-                {% if page_obj.has_next %}
-                <a
-                  href="{% if page_obj.has_next %}?page={{ page_obj.next_page_number }} {% endif %}"
-                  ><i class="fa fa-step-forward fa-2x"></i
-                ></a>
+                <a href="{% if page_obj.has_previous %}?page={{ page_obj.previous_page_number }}{% endif %}"><i class="fa fa-step-backward fa-2x"></i></a>
+                {% endif %} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {% if page_obj.has_next %}
+                <a href="{% if page_obj.has_next %}?page={{ page_obj.next_page_number }} {% endif %}"><i class="fa fa-step-forward fa-2x"></i></a>
                 {% endif %}
               </center>
               <div class="lecteur">
                 <audio class="fc-media" style="width: 100%">
-                  <source
-                    src="{% if item.audio_file %}{{item.audio_file.url}} {% else %} {{item.audio_link}} {% endif %}"
-                    type="audio/mp3"
-                  />
+                  <source src="{% if item.audio_file %}{{item.audio_file.url}} {% else %} {{item.audio_link}} {% endif %}" type="audio/mp3" />
                 </audio>
               </div>
               {% endfor %}

@@ -4,14 +4,8 @@
   <head>
     <meta charset="utf-8" />
     <title>My Music Player</title>
-    <link
-      href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.7/mediaelementplayer.min.css"
-      rel="stylesheet"
-    />
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.7/mediaelementplayer.min.css" rel="stylesheet" />
     <link href="{% static './style.css' %}" rel="stylesheet" />
   </head>
   <body>
@@ -34,10 +28,7 @@
               </div>
               <div class="lecteur">
                 <audio class="fc-media" style="width: 100%">
-                  <source
-                    src="{% if song_item.audio_file %}{{song_item.audio_file.url}} {% else %} {{item.audio_link}} {% endif %}"
-                    type="audio/mp3"
-                  />
+                  <source src="{% if song_item.audio_file %}{{song_item.audio_file.url}} {% else %} {{item.audio_link}} {% endif %}" type="audio/mp3" />
                 </audio>
               </div>
             </div>
